@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amalina Shabrina - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(145deg, #f6eaf9, #e8dff4);
+      color: #444;
+      overflow-x: hidden;
+      animation: backgroundAnimation 8s infinite alternate;
+    }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background: linear-gradient(145deg, #f6eaf9, #e8dff4);
+      }
+      100% {
+        background: linear-gradient(145deg, #e3d0f7, #d4c7ed);
+      }
+    }
+    
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #e2cafa;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .tabs button {
+      background: none;
+      border: none;
+      color: #6c34b5;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .tabs button:hover, .tabs button.active {
+      color: #9a6be4;
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 4rem 1rem;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(145deg, #c89eff, #b38de6);
+      color: #fff;
+      position: relative;
+    }
+    .header-cloud::before,
+    .header-cloud::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(145deg, #ffe8f7, #ffe4ff);
+      z-index: -1;
+    }
+
+    .header-cloud::before {
+      width: 120px;
+      height: 120px;
+      top: -100px;
+      left: 30%;
+      border-radius: 50%;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-cloud::after {
+      width: 150px;
+      height: 150px;
+      bottom: -60px;
+      right: 20%;
+      border-radius: 50%;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin: 0;
+      letter-spacing: 2px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      font-style: italic;
+      animation: fadeIn 2s ease-in;
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 2rem auto 0;
+      display: block;
+      border: 4px solid #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: bounce 2s infinite;
+    }
+
+    section {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeInUp 1s ease-in;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #6c34b5;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #9a6be4;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0.5rem auto;
+    }
+
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .project-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 300px; /* Atur lebar setiap item project */
+      padding: 15px;
+      background-color: #f9f9f9; /* Opsional: Warna latar belakang */
+      border-radius: 10px; /* Membuat sudut melengkung */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: Bayangan */
+    }
+
+    .project-item img {
+      width: 170px; /* Atur lebar gambar lebih besar agar persegi panjang */
+      height: 100px; /* Atur tinggi gambar untuk membentuk persegi panjang */
+      object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+      border-radius: 10px; /* Membuat sudut melengkung pada gambar */
+      margin-bottom: 10px; /* Memberi jarak antara gambar dan teks */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Opsional: Bayangan pada gambar */
+    }
+
+
+    .project-item p {
+      margin: 5px 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .skills div {
+      text-align: center;
+      width: 120px; /* Sesuaikan lebar kontainer jika diperlukan */
+    }
+
+    .skills img {
+      width: 100px; /* Atur lebar gambar */
+      height: 100px; /* Atur tinggi gambar */
+      object-fit: cover; /* Menghindari gambar terdistorsi */
+      border-radius: 10px; /* Opsional: memberikan sudut melengkung */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
+    }
+
+    .skills p {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+          /* General Section Styling */
+    .experience-section {
+      margin-bottom: 40px; /* Space between sections */
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f4f4f4;
+    }
+
+    .experience-section h3 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* Experience Container Styling */
+    .experience {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px; /* Space between experience items */
+      justify-content: center;
+    }
+
+    /* Styling for Each Experience Item */
+    .experience-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .experience-item:hover {
+      transform: scale(1.05); /* Slight hover effect */
+    }
+
+    /* Styling for Experience Item Images */
+    .experience-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling for Text in Experience Items */
+    .experience-item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .experience-item a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .experience-item a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Custom Hire Me Cloud Style */
+    .hire-me-cloud {
+      background: linear-gradient(145deg, #ffe8f7, #bf74c9);
+      color: #444;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: 50px 50px 60px 60px / 50px 50px 80px 80px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      margin: 4rem auto;
+      max-width: 800px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hire-me-cloud::before,
+    .hire-me-cloud::after {
+      content: "";
+      position: absolute;
+      background: linear-gradient(145deg, #ffe8f7, #ffe4ff);
+      z-index: -1;
+    }
+
+    .hire-me-cloud::before {
+      width: 120px;
+      height: 120px;
+      top: -50px;
+      left: 30%;
+      border-radius: 50%;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hire-me-cloud::after {
+      width: 150px;
+      height: 150px;
+      bottom: -60px;
+      right: 20%;
+      border-radius: 50%;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hire-me-cloud h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #6c34b5;
+    }
+
+    .hire-me-cloud p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hire-button {
+      display: inline-block;
+      background: #6c34b5;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.8rem 2.5rem;
+      border-radius: 30px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .hire-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      background: #5a28a6;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    footer {
+      background: #6c34b5;
+      text-align: center;
+      padding: 1.5rem 0;
+      color: #fff;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button class="tab-link active" data-tab="home">Home</button>
+    <button class="tab-link" data-tab="projects">Projects</button>
+    <button class="tab-link" data-tab="skills">Skills</button>
+    <button class="tab-link" data-tab="experience">Experience</button>
+    <button class="tab-link" data-tab="about">About</button>
+    <button class="tab-link" data-tab="contact">Contact</button>
+    <button class="tab-link" data-tab="hire">Hire Me</button>
+  </div>
+
+  <main>
+    <section id="home" class="tab-content active">
+      <div class="header-cloud"></div>
+      <header>
+        <h1>Hi! I'm Amalina Shabrina</h1>
+        <p>Informatics Engineering Student | Machine Learning Enthusiast</p>
+        <img src="profile.jpg" alt="Profile Picture">
+      </header>
+      <p>Welcome to my portfolio! Explore my projects and learn more about my journey in technology and innovation.</p>
+    </section>
+
+    <section id="projects" class="tab-content">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-item">
+          <img src="Aiventure.jpg" alt="AI Tourist Recommender">
+          <p><strong>AIVENTURE</strong> 
+          </p>AI Tourist Recommender : A personalized recommendation system for tourist attractions based on image scans.</p>
+        </div>
+        <div class="project-item">
+          <img src="streamlit.jpg" alt="Bike Sharing Analysis">
+          <p><strong>Bike Sharing Analysis</strong> </p>
+            <p>Data analytics project using RFM methodology for user behavior insights.</p>
+        </div>
+        <div class="project-item">
+          <img src="Dataset.jpg" alt="G-CapsNet: Use of Capsule Networks for Brain Tumor Detection Through MRI Image Analysis">
+          <p><strong>G-CapsNet: Use of Capsule Networks for Brain Tumor Detection Through MRI Image Analysis</strong> </p>
+            <p>Developed deep learning models with multi-scale feature extraction</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="tab-content">
+      <h2>Skills</h2>
+    
+      <!-- Skills Section -->
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <div class="skills">
+          <!-- Core Skills -->
+          <div>
+            <img src="python.jpg" alt="Python">
+            <p>Python</p>
+          </div>
+          <div>
+            <img src="tensorflow.jpg" alt="TensorFlow">
+            <p>TensorFlow</p>
+          </div>
+          <div>
+            <img src="ml.png" alt="Machine Learning">
+            <p>Machine Learning</p>
+          </div>
+          <div>
+            <img src="microsoft office.jpg" alt="Microsoft Office">
+            <p>Microsoft Office</p>
+          </div>
+          <div>
+            <img src="alice.jpeg" alt="Alice">
+            <p>Alice</p>
+          </div>
+          <div>
+            <img src="writing.png" alt="Writing">
+            <p>Writing</p>
+          </div>
+          <div>
+            <img src="design.jpg" alt="Design">
+            <p>Design</p>
+          </div>
+          <div>
+            <img src="photography.jpg" alt="Photography">
+            <p>Photography</p>
+          </div>
+          
+          <!-- Beginner Skills -->
+          <div>
+            <img src="js.png" alt="JavaScript">
+            <p>JavaScript (Beginner)</p>
+          </div>
+          <div>
+            <img src="c++.png" alt="C++">
+            <p>C++ (Beginner)</p>
+          </div>
+          <div>
+            <img src="java.png" alt="Java">
+            <p>Java (Beginner)</p>
+          </div>
+          <div>
+            <img src="laravel.png" alt="Laravel">
+            <p>Laravel (Beginner)</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Tools Section -->
+      <div class="tools-section">
+        <h3>Tools</h3>
+        <div class="skills">
+          <div>
+            <img src="canva.jpeg" alt="Canva">
+            <p>Canva</p>
+          </div>
+          <div>
+            <img src="eclipse.jpg" alt="Eclipse">
+            <p>Eclipse</p>
+          </div>
+          <div>
+            <img src="figma.jpg" alt="Figma">
+            <p>Figma</p>
+          </div>
+          <div>
+            <img src="git.jpeg" alt="GitHub">
+            <p>GitHub</p>
+          </div>
+          <div>
+            <img src="greenfoot.jpeg" alt="Greenfoot">
+            <p>Greenfoot</p>
+          </div>
+          <div>
+            <img src="idx.png" alt="Project IDX">
+            <p>Project IDX</p>
+          </div>
+          <div>
+            <img src="octave.png" alt="Octave">
+            <p>Octave</p>
+          </div>
+          <div>
+            <img src="sql.jpg" alt="SQL">
+            <p>SQL Server Management Studio</p>
+          </div>
+          <div>
+            <img src="vscode.png" alt="VS Code">
+            <p>VS Code</p>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+            
+    <section id="experience" class="tab-content">
+      <h2>Experience</h2>
+    
+      <!-- Training Section -->
+      <div class="experience-section">
+        <h3>Training</h3>
+        <div class="experience">
+          <div class="experience-item">
+            <img src="image.png" alt="Bangkit Academy">
+            <p><strong>Bangkit Academy</strong></p>
+            <p>Completed a program focused on Machine Learning.</p>
+            <p>Certification: <a href="https://drive.google.com/file/d/15eqfF6CnWQfnDoRGhq8rinnTP7Z4a7vM/view?usp=sharing" target="_blank">View Certificate</a></p>
+          </div>
+          <div class="experience-item">
+            <img src="oracle.png" alt="Oracle Academy">
+            <p><strong>Oracle Academy</strong></p>
+            <p>Dec 2023 – Present</p>
+            <p>Online Courses</p>
+            <p>JF Java Fundamentals Learner</p>
+          </div>
+          <div class="experience-item">
+            <img src="dicoding.jpeg" alt="Dicoding">
+            <p><strong>Dicoding</strong></p>
+            <p>Online Courses</p>
+            <p>Learn basic dev-ops fundamentals</p>
+            <p>Certification: <a href="https://bit.ly/AmalinaDicodingCertificateDev-Ops" target="_blank">View Certificate</a></p>
+          </div>
+          <div class="experience-item">
+            <img src="cisco.png" alt="Cisco Networking Academy">
+            <p><strong>Cisco Networking Academy</strong></p>
+            <p>Online Course</p>
+            <p>CCNAv7: Introduction to Networks</p>
+            <p>Certification: <a href="https://bit.ly/AmalinaCiscoCertificate" target="_blank">View Certificate</a></p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Work Section -->
+      <div class="experience-section">
+        <h3>Work</h3>
+        <div class="experience">
+          <div class="experience-item">
+            <img src="ttb.jpg" alt="Teh Tarik Bakar">
+            <p><strong>Teh Tarik Bakar</strong></p>
+            <p>Worked as a bar and cashier, providing excellent customer service and managing orders.</p>
+          </div>
+          <div class="experience-item">
+            <img src="kudureti.jpeg" alt="Kudureti.com">
+            <p><strong>Kudureti.com</strong></p>
+            <p>Currently working as a content creator, producing engaging articles and digital content.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Organization Section -->
+      <div class="experience-section">
+        <h3>Organization</h3>
+        <div class="experience">
+          <div class="experience-item">
+            <img src="kamabea.jpg" alt="Kamabea">
+            <p><strong>Kamabea Organization</strong></p>
+            <p>Served as Head of the Entrepreneurship Department, organizing workshops and managing entrepreneurial projects.</p>
+          </div>
+          <div class="experience-item">
+            <img src="hima.png" alt="HIMAILKOM ARSHAKA">
+            <p><strong>HIMA ILKOM ARSHAKA</strong></p>
+            <p>Secretary of the Social and Community Service Division, contributing to social programs and documentation.</p>
+          </div>
+          <div class="experience-item">
+            <img src="mydua.jpg" alt="Mydua Organization">
+            <p><strong>Mydua Social Organization</strong></p>
+            <p>Volunteered in community development projects focusing on education and empowerment.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Award Section -->
+      <div class="experience-section">
+        <h3>Award</h3>
+        <div class="experience">
+          <div class="experience-item">
+            <img src="Logo unnes lagi.png" alt="Student Organization Research Funding">
+            <p><strong>Award</strong></p>
+            <p>Received the Student Organization Research Funding by DPA LPPM 2024.</p>
+          </div>
+        </div>
+      </div>
+    
+    </section>
+    
+
+    <section id="about" class="tab-content">
+      <h2>About Me</h2>
+      <p>I am a passionate and driven Computer Engineering student with a strong foundation in analytical thinking, planning, and problem-solving. I’ve honed my technical skills in programming languages such as Python, Java, PHP, and C++, and I’m always eager to learn and grow in the ever-evolving tech landscape.</p>
+
+        <p>My journey has been shaped by my love for challenges and my active participation in training, competitions, and organizations, where I’ve also gained valuable leadership experience. I thrive in collaborative environments and believe in the power of teamwork to bring creative and innovative solutions to life.</p>
+        
+       <p>With a focus on computer engineering, I’m particularly interested in areas such as machine learning, data analysis, and data science, where I see immense potential for transforming the way we interact with technology. I’m committed to applying both my technical and creative skills to deliver impactful solutions that address real-world problems.</p>
+    </section>
+
+    <section id="contact" class="tab-content">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out to me for collaborations, project inquiries, or just to say hello!</p>
+      <ul style="list-style: none; padding: 0; font-size: 1rem;">
+        <li>Email: <a href="mailto:amalinaashabrinaa@gmail.com">amalinaashabrinaa@gmail.com</a></li>
+        <li>Phone: <a href="tel:089631448556">089631448556</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/amalina-shabrina-3a6a801a5/" target="_blank">linkedin.com/in/amalina</a></li>
+        <li>GitHub: <a href="https://github.com/AmalinaShabrina" target="_blank">github.com/amalina</a></li>
+      </ul>
+    </section>
+
+    <section id="hire" class="tab-content">
+      <div class="hire-me-cloud">
+        <h2>🚀 Let's Work Together!</h2>
+        <p>I am excited to collaborate on freelance projects, internships, or full-time roles. My expertise lies in Machine Learning, Data Analysis, and Data Science. </p>
+          <p>Together, we can bring innovative ideas to life!</p>
+        <a href="mailto:amalinaashabrinaa@gmail.com" style="color: #f7f3f8; font-weight: bold;">Contact Me Now!</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Amalina Shabrina. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Tab functionality
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabLinks.forEach(tab => tab.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked tab
+        link.classList.add('active');
+        document.getElementById(link.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
